@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Product = ({data}) => {
+const Product = ({data, addToCart}) => {
 
 
   return (
@@ -10,7 +10,7 @@ const Product = ({data}) => {
             <Text style={styles.title}>{data.name}</Text>
             <Text style={styles.price}>$ {data.price}</Text>
         </View>
-        <TouchableOpacity style={styles.buttonAdd}>
+        <TouchableOpacity style={styles.buttonAdd} onPress={addToCart}>
             <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
     </View>
