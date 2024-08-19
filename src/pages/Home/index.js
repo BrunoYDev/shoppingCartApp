@@ -1,4 +1,4 @@
-import React,{ useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -46,7 +46,7 @@ const Home = () => {
 
   const handleAddCart = (item) => {
     addItemCart(item);
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,9 +56,12 @@ const Home = () => {
           style={styles.cartButton}
           onPress={() => navigation.navigate("Cart")}
         >
-          <View style={styles.dot}>
-            <Text style={styles.dotText}>{cart?.length}</Text>
-          </View>
+          {cart.length >= 1 && (
+            <View style={styles.dot}>
+              <Text style={styles.dotText}>{cart?.length}</Text>
+            </View>
+          )}
+
           <Feather name="shopping-cart" size={30} color="#000" />
         </TouchableOpacity>
       </View>
@@ -67,7 +70,9 @@ const Home = () => {
         style={styles.list}
         data={products}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <Product data={item} addToCart={() => handleAddCart(item)} />}
+        renderItem={({ item }) => (
+          <Product data={item} addToCart={() => handleAddCart(item)} />
+        )}
       />
     </SafeAreaView>
   );

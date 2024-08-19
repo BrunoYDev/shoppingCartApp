@@ -4,7 +4,7 @@ import { CartContext } from "../../contexts/CartContext";
 import CartItem from "../../components/CartItem";
 
 const Cart = () => {
-  const { cart, addItemCart, removeItemCart } = useContext(CartContext);
+  const { cart, addItemCart, removeItemCart, total } = useContext(CartContext);
 
   return (
     <View style={styles.container}>
@@ -22,6 +22,8 @@ const Cart = () => {
             removeItem={() => removeItemCart(item)}
           />
         )}
+
+        ListFooterComponent={() => <Text style={styles.total}>Total: $ {total.toFixed(2)}</Text>}
       />
     </View>
   );
@@ -43,4 +45,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
   },
+  total:{
+    fontSize: 18,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginBottom: 24
+  }
 });
